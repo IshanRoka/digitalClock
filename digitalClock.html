@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(161, 161, 236);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: serif;
+        }
+        h2{
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .clock{
+            display: flex;
+        }
+        .clock div{
+            margin: 5px;
+            position: relative;
+        }
+        .clock span{
+            width: 100px;
+            height: 80px;
+            background-color: rgb(20, 70, 87);
+            opacity: 0.8;
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .clock .text{
+            height: 30px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        #ampm{
+            position: absolute;
+            bottom: 0;
+            width: 60px;
+            height: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <H2>Digital Clock</H2>
+        <div class="clock">
+            <div class="">
+                <span id="hour">00</span>
+                <span class="text">Hours</span>
+            </div>
+            <div class="">
+                <span id="minute">00</span>
+                <span class="text">minute</span>
+
+            </div>
+            <div class="">
+                <span id="second">00</span>
+                <span class="text">second</span>
+
+            </div>
+            <div class="">
+                <span id="ampm">AM</span>
+            </div>
+        </div>
+    <script>
+        const hourE1=document.getElementById("hour");
+        const minuteE1=document.getElementById("minute");
+        const secondE1=document.getElementById("second");
+        const ampmE1=document.getElementById("ampm");
+
+        const updateClock=()=>{
+            let h=new Date().getHours();
+            let m=new Date().getMinutes();
+            let s=new Date().getSeconds();
+            let ampm="AM"
+
+            if(h>12){
+                ampm="PM"
+            }
+            if(h<10){
+                h="0"+h;
+            }
+            if(m<10){
+                m="0"+m;
+            }
+            if(s<10){
+                s="0"+s;
+            }
+            hourE1.innerText=h;
+            minuteE1.innerText=m;
+            secondE1.innerText=s;
+            ampmE1.innerText=ampm;
+            setTimeout(()=>{
+                updateClock();
+            },1000)
+        }
+
+        updateClock();
+
+
+    </script>
+</body>
+</html>
